@@ -8,7 +8,7 @@
   </head>
   <body>
   <h1>Welcome</h1>
-  <h2>${loginname}</h2>
+  <h2>${username}</h2>
   <h3>Dit kodeord er ${password}</h3>
 
   </body>

@@ -11,19 +11,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Login page</title>
+    <title>Login</title>
   </head>
   <body>
-  <h1>Værs'go at logge ind</h1>
+  <h1>Welcome, please login</h1>
 
   <form action="/login" method="post">
 
-    <p style="color:red;">${errorMessage}</p>
-    <p>Login name: <input type="text" name="loginname" width="30"/>
+      Login name: <input type="text" name="loginname" width="30"/>
       Password: <input type="password" name="password" width="10"/>
       <input type="submit" value="Login"/></p>
 
   </form>
+
+  <p style="color:red;">${errorMessage}</p>
+
 
   </body>
 </html>
