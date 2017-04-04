@@ -1,4 +1,4 @@
-package datalayer;
+package DataLayer;
 
 //STEP 1. Import required packages
 import java.sql.*;
@@ -12,13 +12,13 @@ public class Database {
     static final String USER = "admin";
     static final String PASS = "admin";
 
-    public Database(){
+    public boolean validLogin(String sUserName, String sPassWord)
+    {
 
-    }
-
-    public static void main(String[] args) {
         Connection conn = null;
         Statement stmt = null;
+        boolean validLoginResult = false;
+
         try{
             //STEP 2: Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
@@ -31,20 +31,16 @@ public class Database {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT username, password FROM users";
-            stmt.execute(sql);
+            sql = "SELECT id, username, password FROM users WHERE username = \"" +
+                     sUserName + "\" AND password = \"" + sPassWord + "\"";
+
+            System.out.println(sql);
+
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
-            while(rs.next()){
-                //Retrieve by column name
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-
-                //Display values
-                System.out.print("Username: " + username);
-                System.out.println();
-                System.out.println("Password: " + password);
+            if(rs.next()){
+                validLoginResult = true;
             }
             //STEP 6: Clean-up environment
             rs.close();
@@ -70,24 +66,10 @@ public class Database {
                 se.printStackTrace();
             }//end finally try
         }//end try
-        System.out.println("Goodbye!");
-    }//end main
-
-    
-    public static boolean isValidUserLogin(String sUserName, String sUserPassword) {
-        boolean bResult = false;
-
-
-
-
-
-        return bResult;
+        System.out.println("Closing DB Connection - Goodbye!");
+        return validLoginResult;
     }
 
 
-
-
-
-
-}//end FirstExample
+}
 

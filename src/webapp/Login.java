@@ -1,9 +1,8 @@
 package webapp;
 
-import applayer.User;
+import AppLayer.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,10 +36,8 @@ public class Login extends HttpServlet {
 
         /*
         User userObject = new User();
-
         String sLoginName = request.getParameter("loginname");
         String sPassword = request.getParameter("password");
-
         if (userObject.validUserCredentials(sLoginName,sPassword))
         {
             request.setAttribute("loginname",sLoginName);
